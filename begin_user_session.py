@@ -1,4 +1,3 @@
-import service as s
 import random, Crypto
 from Crypto.Cipher import AES
 import os
@@ -9,6 +8,7 @@ import cifrario
 
 def begin_user_session():
     print("Hello!")
+    p_list = list_from_p()
     while True:
             cmd = input(r"""
 
@@ -23,21 +23,28 @@ exit. Exit the program.
                 # add a service
                 add_service()
             elif cmd == "2":
-                # show a specific service
-                show_service_list()
+                # show all services
+                show_service_list(p_list)
             elif cmd == "3":
-                
+                # show a specific service
                 show_service()
+            elif cmd == "4":
+                list_from_p()
             elif cmd == "exit":
                 break
                 
-            
-def show_service_list():
+def list_from_p():
+    p_list = []
     with open("p/p.txt", 'r') as p:
-        services = p.readlines()
-        for s in services:
-            serv = s.split(" ")
-            print(serv[0])
+        p_lines = p.readlines()
+        for l in p_lines:
+            p_list.append(l.split(" "))
+    return p_list
+
+def show_service_list(p_list):
+    print("#########################################################################\nYour services:")
+    for p in p_list:
+        print(p[0])
 
 def show_service():
     service_name = input("\nWitch service do you want to see? > ")
@@ -54,7 +61,6 @@ def add_service():
     while True:
         cmd = input("\nIf you want i can generate a fandom password for you. Do you want a random password? [y/n]")
         if cmd == "y" or cmd == "Y" or cmd == "yes":
-            # generare una password random di x caratteri.
             p_lenght = input("\nHow much characters do you want? (at least 6)")
             password = cifrario.password_gen(int(p_lenght))
             
