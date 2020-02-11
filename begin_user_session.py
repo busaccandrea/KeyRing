@@ -28,9 +28,8 @@ exit. Exit the program.
             elif cmd == "3":
                 # show a specific service
                 show_service()
-            elif cmd == "4":
-                list_from_p()
             elif cmd == "exit":
+                #exit program
                 break
                 
 def list_from_p():

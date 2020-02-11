@@ -1,18 +1,33 @@
 import cifrario
-def login():
+import getpass 
+
+def login(password):
     key = ""
     with open("p/key.txt", 'rb') as k:
         key = k.readline()
+    #password = getpass.getpass("Insert a password: > ")
+    password = cifrario.hash(password)
+    if password == key:
+        print("########### sghere")
+        cifrario.decrypt(key, "p/", "p.txt.aes")
+        print("Logged in successfully.")
+    else: 
+        print("Wrong password.")
 
-    while True:   
-        password = input("Insert a password: > ")
+
+'''def login():
+    key = ""
+    with open("p/key.txt", 'rb') as k:
+        key = k.readline()
+    while True:
+        password = getpass.getpass("Insert a password: > ")
         password = cifrario.hash(password)
         if password == key:
             cifrario.decrypt(key, "p/", "p.txt.aes")
             print("Logged in successfully.")
             break
         else: 
-            print("Wrong password.")
+            print("Wrong password.")'''
 
 def logout():
     key = cifrario.get_key()
