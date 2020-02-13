@@ -8,7 +8,6 @@ def login(password):
     #password = getpass.getpass("Insert a password: > ")
     password = cifrario.hash(password)
     if password == key:
-        print("########### sghere")
         cifrario.decrypt(key, "p/", "p.txt.aes")
         print("Logged in successfully.")
     else: 

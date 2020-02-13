@@ -27,10 +27,10 @@ class login_form():
 
         # welcome label
         padding_label = tk.Label(self.root, bg = "#1E1503")
-        padding_label.grid(column = 0, row = 0, sticky = "WE", pady = 100)
+        padding_label.grid(column = 0, row = 0, sticky = "WE", pady = 90)
 
-        welcome_label = tk.Label(self.root, text = "Welcome Pavel!", bg = "#1E1503", font = "Merriweather 25", fg = "#ffffff")
-        welcome_label2 = tk.Label(self.root, text = "Insert your password to begin.", bg = "#1E1503", font = "Merriweather 25", fg = "#ffffff")
+        welcome_label = tk.Label(self.root, text = "Welcome Pavel!", bg = "#1E1503", font = "Merriweather 25", fg = "#F2CC87")
+        welcome_label2 = tk.Label(self.root, text = "Insert your password to begin.\n\n", bg = "#1E1503", font = "Merriweather 25", fg = "#F2CC87")
 
         welcome_label.grid(column = 0, row = 3, sticky = "WE")
         welcome_label2.grid(column = 0, row = 4, sticky = "WE")
