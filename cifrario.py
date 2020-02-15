@@ -70,6 +70,13 @@ def get_key():
     return key
 
 def password_gen(length):
+    password = ""
+    for i in range(0, length):
+        c = random.randint(33, 125)
+        password += chr(c)
+    return password
+
+def password_gen_old(length):
     while True:
         password = ""
         for i in range(0, length):
