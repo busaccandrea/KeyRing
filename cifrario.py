@@ -76,7 +76,7 @@ def password_gen(length):
         password += chr(c)
     return password
 
-def password_gen_old(length):
+'''def password_gen_old(length):
     while True:
         password = ""
         for i in range(0, length):
@@ -85,4 +85,4 @@ def password_gen_old(length):
         ans = input("This is your password.\n\n" + password + "\n\nIt's good enough? y/n")
         if ans == "y":
             break
-    return password
+    return password'''

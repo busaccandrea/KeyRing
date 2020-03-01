@@ -6,7 +6,7 @@ class login_form():
     def __init__(self):
         self.root = tk.Tk()
 
-    def submit(self):
+    def submit(self, event = None):
         password = self.put_password.get()
         if password == "":
             print ("no password")
@@ -20,30 +20,33 @@ class login_form():
         self.root.title("Login.")
         self.root.geometry("1000x700")
         self.root.resizable(False, False)
-        self.root.configure(background = "#1E1503")
-        self.root.columnconfigure(0, weight=1)
-        self.root.rowconfigure(10, weight=1)
+        self.root.configure(background = "#212121")
+
+        #background image
+        background_image = tk.PhotoImage("bg/logokeyring.png")
 
 
-        # welcome label
-        padding_label = tk.Label(self.root, bg = "#1E1503")
-        padding_label.grid(column = 0, row = 0, sticky = "WE", pady = 90)
-
-        welcome_label = tk.Label(self.root, text = "Welcome Pavel!", bg = "#1E1503", font = "Merriweather 25", fg = "#F2CC87")
-        welcome_label2 = tk.Label(self.root, text = "Insert your password to begin.\n\n", bg = "#1E1503", font = "Merriweather 25", fg = "#F2CC87")
-
-        welcome_label.grid(column = 0, row = 3, sticky = "WE")
-        welcome_label2.grid(column = 0, row = 4, sticky = "WE")
-
+        #label
+        self.welcome_label = tk.Label(self.root, text = "Welcome Pavel!\nInsert your password to begin.\n", font = "Merriweather 25", bg = "#212121", fg = "#F25454")
+        background_label = tk.Label(self.root, image = background_image)
+        background_label.place(x = 0, y = 0)
+        background_label.image = background_image
 
         # entry field
-        self.put_password = tk.Entry(self.root, justify = "center", show="•")
-        self.put_password.grid(column = 0, row = 5, pady = 10, sticky = "WE", padx = 100)
-
+        self.put_password = tk.Entry(self.root, justify = "center", show = "•")
+        self.put_password.bind('<Return>', self.submit)
 
         #button
-        submit_button = tk.Button(self.root, text = "Submit", font = "Merriweather 12", command = self.submit)
-        submit_button.grid(column = 0, row = 7, pady = 10)
+        self.submit_button = tk.Button(self.root, text = "Submit", font = "Merriweather 12", command = self.submit)
+        
+        #place things
+        self.welcome_label.grid(column = 0, row = 3, rowspan = 2, sticky = "WE")
+        self.put_password.grid(column = 0, row = 4, sticky = "WE")
+        self.submit_button.grid(column = 0, row = 5)
 
+        for row in range(6):
+            self.root.grid_rowconfigure(row, weight=1)
+        for col in range(1):
+            self.root.grid_columnconfigure(col, weight=1)
 
         self.root.mainloop()

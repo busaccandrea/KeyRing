@@ -48,7 +48,7 @@ class user_session_window():
         self.text_area.configure(state = "disabled")
 
         #labels
-        self.l1 = tk.Label(main, text = "Your services.", font = "Merriwheather 15", fg = "#efefef", bg = "#494949", anchor = "w")
+        self.l1 = tk.Label(main, text = "Your services.", font = "Merriwheather 15", fg = "#F25454", bg = "#494949", anchor = "w")
         self.refresh_label = tk.Label(main, text = "Refresh list", bg = "#494949", fg = "#efefef", padx = 10, anchor = "sw")
 
         #listbox
